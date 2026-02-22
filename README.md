@@ -1,16 +1,68 @@
-# React + Vite
+# 🎭 Meme Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React-based Meme Generator application that allows users to create custom memes using the Imgflip Public API.
 
-Currently, two official plugins are available:
+This project dynamically fetches meme templates and allows users to add custom top and bottom text in real time.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- 🎲 Random meme template generator  
+- ✍ Custom top and bottom text  
+- 🖼 Default meme image on page load  
+- ⚡ Fast and responsive UI  
+- 📱 Mobile-friendly design  
+- 🌐 API integration using Fetch  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠 Tech Stack
+
+- React (useState, useEffect)
+- Modern CSS (Glassmorphism UI Design)
+- Imgflip Public Meme API
+- Vercel (Deployment)
+- GitHub (Version Control)
+
+---
+
+## 🌐 API Used
+
+This project uses the Imgflip Public Meme API:
+
+https://api.imgflip.com/get_memes
+
+The API provides meme templates that are randomly selected and displayed in the application.
+
+---
+
+## ⚙ How It Works
+
+- When the component loads, meme templates are fetched from the Imgflip API.
+- Templates are stored in state.
+- When the "Generate Meme" button is clicked:
+  - A random meme template is selected.
+  - The image updates dynamically.
+- User-entered text is displayed over the meme image in real time.
+
+---
+
+## 🎯 Learning Objectives
+
+This project demonstrates:
+
+- React functional components
+- React Hooks (useState & useEffect)
+- Controlled form inputs
+- API integration
+- Conditional rendering
+- Modern responsive UI design
+
+---
+
+## 👨‍💻 Author
+
+Tanvir Khan  
+
+If you like this project, consider giving it a ⭐ on GitHub!

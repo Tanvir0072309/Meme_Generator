@@ -4,29 +4,29 @@ import "../index.css"
 export function Meme() {
 
     const [meme, setMeme] = useState({
-        topText: "",
-        bottomText: "",
-        randomImage: ""
+        topText: "Bro, at least",
+        bottomText: "enter some text",
+        randomImage: "https://images.meme-arsenal.com/8bb937b22acb294fef5fb372a92aaf3e.jpg"
     })
 
     const [allMemes, setAllMemes] = useState([])
-    const [showMeme, setShowMeme] = useState(false)
+    const [showMeme, setShowMeme] = useState(true)  // default visible
 
-    // ✅ Fetch memes once when component loads
+    // Fetch memes only (image change nahi karenge yaha)
     useEffect(() => {
         fetch("https://api.imgflip.com/get_memes")
             .then(res => res.json())
             .then(data => {
                 setAllMemes(data.data.memes)
-                setMeme(prev => ({
-                    ...prev,
-                    randomImage: data.data.memes[0].url
-                }))
             })
+            .catch(err => console.log("Error:", err))
     }, [])
 
-    // ✅ Generate random meme image
+    // Generate random meme image
     function generateMeme() {
+
+        if (allMemes.length === 0) return
+
         const randomNumber = Math.floor(Math.random() * allMemes.length)
         const url = allMemes[randomNumber].url
 
@@ -34,11 +34,8 @@ export function Meme() {
             ...prevMeme,
             randomImage: url
         }))
-
-        setShowMeme(true)
     }
 
-    // ✅ Handle input change
     function handleChange(e) {
         const { name, value } = e.target
 
@@ -60,7 +57,6 @@ export function Meme() {
                         name="topText"
                         value={meme.topText}
                         onChange={handleChange}
-                        placeholder="Enter top text"
                     />
                 </div>
 
@@ -71,7 +67,6 @@ export function Meme() {
                         name="bottomText"
                         value={meme.bottomText}
                         onChange={handleChange}
-                        placeholder="Enter bottom text"
                     />
                 </div>
 
