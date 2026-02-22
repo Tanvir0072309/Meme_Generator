@@ -1,18 +1,44 @@
-import { useState } from "react"
-import memeImage from '../assets/img/meme.jpeg'
+import { useState, useEffect } from "react"
 import "../index.css"
 
 export function Meme() {
+
     const [meme, setMeme] = useState({
         topText: "",
         bottomText: "",
-        randomImage: memeImage
+        randomImage: ""
     })
+
+    const [allMemes, setAllMemes] = useState([])
     const [showMeme, setShowMeme] = useState(false)
 
+    // ✅ Fetch memes once when component loads
+    useEffect(() => {
+        fetch("https://api.imgflip.com/get_memes")
+            .then(res => res.json())
+            .then(data => {
+                setAllMemes(data.data.memes)
+                setMeme(prev => ({
+                    ...prev,
+                    randomImage: data.data.memes[0].url
+                }))
+            })
+    }, [])
+
+    // ✅ Generate random meme image
     function generateMeme() {
+        const randomNumber = Math.floor(Math.random() * allMemes.length)
+        const url = allMemes[randomNumber].url
+
+        setMeme(prevMeme => ({
+            ...prevMeme,
+            randomImage: url
+        }))
+
         setShowMeme(true)
     }
+
+    // ✅ Handle input change
     function handleChange(e) {
         const { name, value } = e.target
 
@@ -36,7 +62,6 @@ export function Meme() {
                         onChange={handleChange}
                         placeholder="Enter top text"
                     />
-
                 </div>
 
                 <div className="input-group">
