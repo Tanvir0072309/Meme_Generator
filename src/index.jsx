@@ -1,7 +1,7 @@
 
-import { MyHeader } from './comonents/Header.jsx'
-import { Meme } from './comonents/Main.jsx'
-import { Footer } from "./comonents/Footer"
+import { MyHeader } from './components/Header.jsx'
+import { Meme } from './components/Main.jsx'
+import { Footer } from "./components/Footer"
 import ReactDOM from 'react-dom/client'
 import './index.css'
 
